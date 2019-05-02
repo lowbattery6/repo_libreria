@@ -635,7 +635,7 @@
                                                             </div><!-- Termina div col de cantidad -->
 
                                                             <div class="col-md-1">
-                                                                <a class="text-muted">$</a><a class="text-muted" value="<?php echo $precioContiene ?>" id="precioInicial<?php echo $i; ?>" name="namePrecioInicial"><?php $float = floatval($precioContiene); echo number_format($float, 0, '', '.'); ?></a> 
+                                                                <a class="text-muted">$</a><a class="text-muted" value="<?php echo $precioContiene ?>" id="precioInicial<?php echo $i; ?>" name="namePrecioInicial"><?php $float = floatval($precioContiene); echo number_format($float, 0, '', '.'); ?></a><p class="text-muted"><?php echo round($precioContiene/1.19); ?></p>
                                                             </div><!-- Termina div col de precio unidadd -->
 
                                                             <div class="col-md-2"><!-- Comienza div col de precio Total -->
@@ -644,7 +644,7 @@
                                                                         font-weight: bold;
                                                                         margin-right: 5px;
                                                                         display: block;"> 
-                                                                <a class="text-muted">$</a><a class="text-muted" id="precioTotal<?php echo $i; ?>" name ="precioTotal" value = "<?php echo $total ?>" style="font-size: 17px;"><?php $float = floatval($total); echo number_format($float, 0, '', '.'); ?></a></div><a class="text-muted"><?php echo round($float/1.19); ?></a> 
+                                                                <a class="text-muted">$</a><a class="text-muted" id="precioTotal<?php echo $i; ?>" name ="precioTotal" value = "<?php echo $total ?>" style="font-size: 17px;"><?php $float = floatval($total); echo number_format($float, 0, '', '.'); ?></a></div> 
                                                             </div><!-- Termina div col de precio Total -->
 
                                                             <div class="col-md-2"><!-- Comienza div col de acciones -->

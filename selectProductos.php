@@ -106,13 +106,42 @@
                                 <div class="space-ten"></div>
                                 <div class="btn-ground">
                                     <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-shopping-cart"></span> Agregar al carro</button>
-                                    <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-heart"></span> Compartir</button>
-                                </div>
-                            
+                                    <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-heart"></span> Compartir</button>       
                         </form>
+
+                        <form action="img/acuarela proarte 16853.png" method="POST">
+                            <button type="button" id="'.$id.'" class="btn btn-primary view_data" data-dismiss="modal" data-toggle="modal" ><span class="glyphicon glyphicon-heart"></span> Modificar</button>
+                        </form>
+                            
+                        </div>
+                        
                     </div>
             ';
 
             echo $output;
+            ?>
+
+            <div class="modal fade product_view" id="product_view">
+                <div class="modal-dialog">
+                    <div class="modal-content" id="prueba">
+                    </div>
+                </div>
+            </div>
+
+            <script>
+                $('.view_data').click(function(){  
+                var id = $(this).attr("id");  
+                    $.ajax({  
+                        url:"modal_editar_producto.php",  
+                        method:"post",  
+                        data:{id:id},  
+                        success:function(data){  
+                            $('#prueba').html(data);  
+                            $('#product_view').modal("show");  
+                        }  
+                    });  
+                });
+            </script>
+            <?php
     }
     ?>
