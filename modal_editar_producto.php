@@ -55,7 +55,7 @@ while($fila = mysqli_fetch_array($resultado))
                         <h1>nombre : </h1>
                     </div>
                     <div class="md-6 ">
-                        <input type="text" class="form-control" name="" id="" value="'.$nombre.'">
+                        <input type="text" class="form-control" name="" id="idNombre" value="'.$nombre.'">
                     </div>
                 </div>
 
@@ -64,7 +64,7 @@ while($fila = mysqli_fetch_array($resultado))
                         <h1>Marca : </h1>
                     </div>
                     <div class="md-6 ">
-                        <input type="text" class="form-control" name="" id="" value="'.$marca.'">
+                        <input type="text" class="form-control" name="" id="idMarca" value="'.$marca.'">
                     </div>
                 </div>
 
@@ -73,7 +73,7 @@ while($fila = mysqli_fetch_array($resultado))
                         <h1>Precio neto : </h1>
                     </div>
                     <div class="md-6 ">
-                        <input type="text" class="form-control" name="" id="" value="'.$precioNeto.'">
+                        <input type="text" class="form-control" name="" id="idPrecioNeto" value="'.$precioNeto.'">
                     </div>
                 </div>
 
@@ -82,16 +82,7 @@ while($fila = mysqli_fetch_array($resultado))
                         <h1>Porcentaje de utilidad : </h1>
                     </div>
                     <div class="md-6">
-                        <input type="text" class="form-control" name="" id="" value="'.$porcentajeUtilidad.'">
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="md-6 ">
-                        <h1>Link : </h1>
-                    </div>
-                    <div class="md-6 ">
-                        <input type="text" class="form-control" name="" id="" value="'.$link.'">
+                        <input type="text" class="form-control" name="" id="idPorcentajeUtilidad" value="'.$porcentajeUtilidad.'">
                     </div>
                 </div>
 
@@ -100,7 +91,7 @@ while($fila = mysqli_fetch_array($resultado))
                         <h1>Precio Tramo 2 : </h1>
                     </div>
                     <div class="md-6 ">
-                        <input type="text" class="form-control" name="" id="" value="'.$precioTramo2.'">
+                        <input type="text" class="form-control" name="" id="idPrecioTramo2" value="'.$precioTramo2.'">
                     </div>
                 </div>
 
@@ -109,7 +100,7 @@ while($fila = mysqli_fetch_array($resultado))
                         <h1>Precio tramo 3 : </h1>
                     </div>
                     <div class="md-6 ">
-                        <input type="text" class="form-control" name="" id="" value="'.$precioTramo3.'">
+                        <input type="text" class="form-control" name="" id="idPrecioTramo3" value="'.$precioTramo3.'">
                     </div>
                 </div>
 
@@ -118,14 +109,79 @@ while($fila = mysqli_fetch_array($resultado))
                         <h1>Stock : </h1>
                     </div>
                     <div class="md-6">
-                        <input type="text" class="form-control" name="" id="" value="'.$stock.'">
+                        <input type="text" class="form-control" name="" id="idStock" value="'.$stock.'">
                     </div>
                 </div>
+
+                <div class="row">
+                    <div class="md-6 ">
+                        <h1>Imagen url : </h1>
+                    </div>
+                    <div class="md-6">
+                        <input type="text" class="form-control" name="" id="idImagen" value="'.$imagen.'">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="md-12 text-center">
+                        <input type="submit" onclick="ajax_post();" value="Editar" />
+                    </div>
+                </div>
+
+                <div id="resultado" class="alert alert-success" role="alert"></div>
         </div>
         ';
 
         echo $output;
 
+        ?>
+
+            <script>
+            function ajax_post()
+            {
+
+                var xmlhttp;
+
+                if(window.XMLHttpRequest)
+                {
+                    xmlhttp = new XMLHttpRequest();
+                }
+                else{
+                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                
+                var resultado = document.getElementById("resultado");
+
+                var nombre = document.getElementById("idNombre").value;
+                var marca = document.getElementById("idMarca").value;
+                var precioNeto = document.getElementById("idPrecioNeto").value;
+                var porcentajeUtilidad = document.getElementById("idPorcentajeUtilidad").value;
+                var precioTramo2 = document.getElementById("idPrecioTramo2").value;
+                var precioTramo3 = document.getElementById("idPrecioTramo3").value;
+                var stock = document.getElementById("idStock").value;
+                var id = "<?php echo $id; ?>";
+                var informacion = "nombre="+ nombre +"&marca=" + marca +"&precioNeto=" + precioNeto + "&porcentajeUtilidad=" + porcentajeUtilidad + "&precioTramo2=" + precioTramo2 + "&precioTramo3=" + precioTramo3 + "&stock=" + stock + "&id=" + id;
+
+                xmlhttp.onreadystatechange = function() 
+                {
+                    if(xmlhttp.readyState === 4 && xmlhttp.status === 200)
+                    {
+                        var mensaje = xmlhttp.responseText;
+                        resultado.innerHTML = "Producto editado";
+                    }
+                }
+
+                xmlhttp.open("POST", "editando_producto.php", true);
+                xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xmlhttp.send(informacion);
+                $('.alert').alert();
+                //document.location.reload();
+
+            }
+
+            </script>
+
+        <?php
      
     }
 
