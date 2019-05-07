@@ -25,6 +25,8 @@ while($fila = mysqli_fetch_array($resultado))
         $precioTramo2=$fila['precioTramo2'];
         $precioTramo3=$fila['precioTramo3'];
         $imagen=$fila['imagen'];
+        $tipo = $fila['tipo'];
+        $tags = $fila['tags'];
 
         if($imagen=="")
         {
@@ -121,6 +123,23 @@ while($fila = mysqli_fetch_array($resultado))
                         <input type="text" class="form-control" name="" id="idImagen" value="'.$imagen.'">
                     </div>
                 </div>
+                <div class="row">
+                    <div class="md-6 ">
+                        <h1>Tipo : </h1>
+                    </div>
+                    <div class="md-6">
+                        <input type="text" class="form-control" name="" id="idTipo" value="'.$tipo.'">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="md-6 ">
+                        <h1>Tags : </h1>
+                    </div>
+                    <div class="md-6">
+                        <input type="text" class="form-control" name="" id="idTags" value="'.$tags.'">
+                    </div>
+                </div>
 
                 <div class="row">
                     <div class="md-12 text-center">
@@ -159,8 +178,10 @@ while($fila = mysqli_fetch_array($resultado))
                 var precioTramo2 = document.getElementById("idPrecioTramo2").value;
                 var precioTramo3 = document.getElementById("idPrecioTramo3").value;
                 var stock = document.getElementById("idStock").value;
+                var tipo = document.getElementById("idTipo").value;
+                var tags = document.getElementById("idTags").value;
                 var id = "<?php echo $id; ?>";
-                var informacion = "nombre="+ nombre +"&marca=" + marca +"&precioNeto=" + precioNeto + "&porcentajeUtilidad=" + porcentajeUtilidad + "&precioTramo2=" + precioTramo2 + "&precioTramo3=" + precioTramo3 + "&stock=" + stock + "&id=" + id;
+                var informacion = "nombre="+ nombre +"&marca=" + marca +"&precioNeto=" + precioNeto + "&porcentajeUtilidad=" + porcentajeUtilidad + "&precioTramo2=" + precioTramo2 + "&precioTramo3=" + precioTramo3 + "&stock=" + stock + "&id=" + id + "&tipo=" + tipo + "&tags=" + tags;
 
                 xmlhttp.onreadystatechange = function() 
                 {

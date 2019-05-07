@@ -547,6 +547,14 @@ figure:hover+span {
     }
 }
 
+@media screen and (max-width: 680px) {
+    #carta {
+        margin: 0 auto;
+        float: none;
+        margin-bottom: 10px;
+    }
+}
+
 
 
 

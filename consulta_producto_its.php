@@ -654,7 +654,7 @@
                                     ?>
                                     </div>
                                     <div class="container">
-                                        <div class="row ">
+                                        <div class="row">
                                             
                                         <?php
                                         //Si es que se encuentra se comienza a llenar la tabla desde el array 
@@ -723,10 +723,42 @@
                                                                     <?php 
                                                                     if(isset($_SESSION['admin']) or isset($_SESSION['usuario']))
                                                                     {
+                                                                        if(isset($_SESSION['admin']))
+                                                                        {
+                                                                            if($stock<1)
+                                                                            {
+                                                                                ?>
+                                                                                <input type="submit" name="<?php echo $id; ?>" value="Agregar" style="font-size: 15px; height: 40px; width: 100%; font-weight: bold;" id="<?php echo $usuario; ?>" class="btn btn-danger mx-auto d-block btn-lg"/>
+                                                                                <?php 
+
+                                                                            }
+                                                                            elseif($stock >1 && $stock<9)
+                                                                            {
+                                                                                ?>
+                                                                                <input type="submit" name="<?php echo $id; ?>" value="Agregar" style="font-size: 15px; height: 40px; width: 100%; font-weight: bold;" id="<?php echo $usuario; ?>" class="btn btn-warning mx-auto d-block btn-lg"/>
+                                                                                <?php
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                ?>
+                                                                                <input type="submit" name="<?php echo $id; ?>" value="Agregar" style="font-size: 15px; height: 40px; width: 100%; font-weight: bold;" id="<?php echo $usuario; ?>" class="btn btn-success mx-auto d-block btn-lg"/>
+                                                                                <?php
+                                                                            }
+                                                                            
+                                                                        }
+                                                                        elseif($stock<1)
+                                                                        {
+                                                                            ?>
+                                                                                <input type="submit" name="<?php echo $id; ?>" disabled="disabled" value="Agregar" style="font-size: 15px; height: 40px; width: 100%; font-weight: bold;" id="<?php echo $usuario; ?>" class="btn btn-success mx-auto d-block btn-lg"/>
+                                                                            <?php
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            ?>
+                                                                                <input type="submit" name="<?php echo $id; ?>" value="Agregar" style="font-size: 15px; height: 40px; width: 100%; font-weight: bold;" id="<?php echo $usuario; ?>" class="btn btn-success mx-auto d-block btn-lg"/>
+                                                                            <?php
+                                                                        }
                                                                         
-                                                                        ?>
-                                                                        <input type="submit" name="<?php echo $id; ?>" value="Agregar" style="font-size: 15px; height: 40px; width: 100%; font-weight: bold;" id="<?php echo $usuario; ?>" class="btn btn-success mx-auto d-block btn-lg"/>
-                                                                        <?php
                                                                     }
                                                                     else
                                                                     {
